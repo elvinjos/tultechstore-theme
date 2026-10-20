@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "text": "🔥 Nuevo en tendencia cada semana — gadgets, gafas y más. | Envío estimado 15–30 días hábiles."
+        }
+      },
+      "tultech-header": {
+        "type": "tultech-header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "13098026196886883183": {
+        "type": "shopify://apps/zendrop-dropshipping-pod/blocks/shipping_protection_embed/01a0c88d-3089-7c0b-8926-d2c6b8132290",
+        "disabled": false,
+        "settings": {
+          "placement": "summary"
+        }
+      },
+      "15779431959803902476": {
+        "type": "shopify://apps/teemdrop-dropshipping/blocks/cart-replacer-global/bc06b585-387a-4e30-b058-9045d37e3f95",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}
