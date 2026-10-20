@@ -15,7 +15,7 @@
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  window.addEventListener("DOMContentLoaded", function() {
     const messages = [
       "{{ section.settings.text_1 | escape }}",
       "{{ section.settings.text_2 | escape }}",
@@ -27,14 +27,14 @@
     const barElement = document.getElementById("tultech-announcement");
 
     if (textElement && messages.length > 1) {
-      setInterval(() => {
+      setInterval(function() {
         barElement.style.opacity = 0;
-        setTimeout(() => {
+        setTimeout(function() {
           currentIndex = (currentIndex + 1) % messages.length;
           textElement.textContent = messages[currentIndex];
           barElement.style.opacity = 1;
         }, 500);
-      }, 4000); // Rota cada 4 segundos
+      }, 4000);
     }
   });
 </script>
