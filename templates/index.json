@@ -1,9 +1,5 @@
 {
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "settings": {}
-    },
     "hero": {
       "type": "hero",
       "settings": {}
@@ -14,7 +10,6 @@
     }
   },
   "order": [
-    "announcement-bar",
     "hero",
     "features"
   ]
