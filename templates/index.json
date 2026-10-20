@@ -21,10 +21,47 @@
     "features": {
       "type": "features",
       "settings": {}
+    },
+    "179245982684ae7d59": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_dc955fc_b8KL3j": {
+          "type": "ai_gen_block_dc955fc",
+          "settings": {
+            "title": "Lo que ves es lo que llega. Siempre.",
+            "subtitle": "Tecnología en tendencia, accesorios y repuestos que en tu país cuestan el doble o simplemente no se consiguen — con fotos reales y comunicación honesta, no promesas vacías.",
+            "primary_label": "Ver catálogo completo",
+            "primary_link": "",
+            "secondary_label": "Escribinos por WhatsApp",
+            "secondary_link": "",
+            "image_fit": "contain",
+            "image_position": "center center",
+            "image_backdrop": "#101C35",
+            "desktop_width_percent": 100,
+            "title_size": 48,
+            "body_size": 18,
+            "corner_radius": 12,
+            "background_color": "#081329",
+            "text_color": "#FFFFFF",
+            "gold_color": "#FFD447",
+            "primary_text_color": "#171300",
+            "primary_hover_color": "#FFE47A",
+            "cyan_color": "#45D7F5",
+            "secondary_hover_text": "#071522",
+            "violet_color": "#9B7BFF"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_dc955fc_b8KL3j"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "hero",
-    "features"
+    "features",
+    "179245982684ae7d59"
   ]
 }
