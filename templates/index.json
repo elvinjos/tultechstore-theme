@@ -9,14 +9,13 @@
  */
 {
   "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {}
+    },
     "hero": {
       "type": "hero",
-      "settings": {
-        "heading": "Lo que ves es lo que llega. Siempre.",
-        "subheading": "Tecnología en tendencia, accesorios y repuestos que en tu país cuestan el doble o simplemente no se consiguen — con fotos reales y comunicación honesta.",
-        "button_text": "Ver catálogo completo",
-        "button_link": "shopify://collections/all"
-      }
+      "settings": {}
     },
     "features": {
       "type": "features",
@@ -24,6 +23,7 @@
     }
   },
   "order": [
+    "announcement-bar",
     "hero",
     "features"
   ]
