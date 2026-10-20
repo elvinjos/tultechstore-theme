@@ -1,1 +1,22 @@
+<div class="announcement-bar">
+  <p style="margin:0;">{{ section.settings.text }}</p>
+</div>
 
+{% schema %}
+{
+  "name": "Barra de Anuncios",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texto del Anuncio",
+      "default": "🔥 Nuevo en tendencia cada semana — gadgets, gafas y más. | Envío estimado 15–30 días hábiles."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barra de Anuncios"
+    }
+  ]
+}
+{% endschema %}
