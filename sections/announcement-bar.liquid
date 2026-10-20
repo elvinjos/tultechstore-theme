@@ -1,5 +1,5 @@
 <div class="announcement-bar" id="tultech-announcement">
-  <p style="margin:0; font-weight: 500;" id="announcement-text">{{ section.settings.text_1 }}</p>
+  <p style="margin:0; font-weight: 500;" id="announcement-text">🔥 Nuevo en tendencia cada semana — gadgets, gafas y más.</p>
 </div>
 
 <style>
@@ -16,67 +16,41 @@
 
 <script>
   (function() {
-    let timer = null;
-
-    function initAnnouncements() {
+    function startAnnouncements() {
       const messages = [
-        "{{ section.settings.text_1 | escape }}",
-        "{{ section.settings.text_2 | escape }}",
-        "{{ section.settings.text_3 | escape }}"
-      ].filter(msg => msg.trim() !== "");
+        "🔥 Nuevo en tendencia cada semana — gadgets, gafas y más.",
+        "📦 Envío estimado 15–30 días hábiles. Te avisamos si algo cambia.",
+        "💬 ¿Dudas antes de comprar? Escribinos por WhatsApp — te respondemos como personas."
+      ];
       
       let currentIndex = 0;
       const textElement = document.getElementById("announcement-text");
       const barElement = document.getElementById("tultech-announcement");
 
-      if (!textElement || !barElement || messages.length <= 1) return;
+      if (!textElement || !barElement) return;
 
-      if (timer) clearInterval(timer);
-
-      timer = setInterval(function() {
+      setInterval(function() {
         barElement.style.opacity = 0;
         setTimeout(function() {
           currentIndex = (currentIndex + 1) % messages.length;
           textElement.textContent = messages[currentIndex];
           barElement.style.opacity = 1;
         }, 300);
-      }, 2000); // 2000ms = 2 segundos
+      }, 2000); // 2000 ms = 2 segundos
     }
 
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initAnnouncements);
+      document.addEventListener("DOMContentLoaded", startAnnouncements);
     } else {
-      initAnnouncements();
+      startAnnouncements();
     }
-
-    // Soporte explícito para cuando editas dentro del personalizador de Shopify
-    document.addEventListener("shopify:section:load", initAnnouncements);
   })();
 </script>
 
 {% schema %}
 {
   "name": "Barra de Anuncios Dinámica",
-  "settings": [
-    {
-      "type": "text",
-      "id": "text_1",
-      "label": "Mensaje 1",
-      "default": "🔥 Nuevo en tendencia cada semana — gadgets, gafas y más."
-    },
-    {
-      "type": "text",
-      "id": "text_2",
-      "label": "Mensaje 2",
-      "default": "📦 Envío estimado 15–30 días hábiles. Te avisamos si algo cambia."
-    },
-    {
-      "type": "text",
-      "id": "text_3",
-      "label": "Mensaje 3",
-      "default": "💬 ¿Dudas antes de comprar? Escribinos por WhatsApp — te respondemos como personas."
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "Barra de Anuncios Dinámica"
