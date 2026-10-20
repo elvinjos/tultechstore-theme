@@ -11,7 +11,12 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "settings": {}
+      "settings": {
+        "heading": "Lo que ves es lo que llega. Siempre.",
+        "subheading": "Tecnología en tendencia, accesorios y repuestos que en tu país cuestan el doble o simplemente no se consiguen — con fotos reales y comunicación honesta, no promesas vacías.",
+        "button_text": "Ver catálogo completo",
+        "button_link": "shopify://collections/all"
+      }
     },
     "features": {
       "type": "features",
