@@ -1,6 +1,165 @@
+{% doc %}
+  @prompt
+    Crea un banner principal para TulTech Store, tienda multicategoría de tecnología, gadgets, accesorios y repuestos. Estética tecnológica con fondo azul marino oscuro, detalles sutiles inspirados en circuitos y acentos amarillo dorado, cian y violeta. Incluye un selector de imagen para cargar la imagen de marca del comercio, con controles de encuadre y una presentación adaptable a móvil que no recorte indebidamente el logotipo o el contacto presentes en la imagen. Mantén el texto separado de la imagen para conservar legibilidad. Título editable: 'Lo que ves es lo que llega. Siempre.' Subtítulo editable: 'Tecnología en tendencia, accesorios y repuestos que en tu país cuestan el doble o simplemente no se consiguen — con fotos reales y comunicación honesta, no promesas vacías.' Botón principal amarillo con texto editable 'Ver catálogo completo' y destino editable inicialmente /collections/all. Botón secundario editable 'Escribinos por WhatsApp', con destino https://wa.me/50663908426. Permite personalizar colores, textos, imagen y botones. Prioriza contraste accesible, lectura clara y buena adaptación a escritorio y móvil. No incluir reseñas, garantías, estadísticas ni promesas adicionales.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-tultech-hero-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: {{ block.settings.text_color }};
+    background-color: {{ block.settings.background_color }};
+    background-image: radial-gradient(circle at 12% 18%, {{ block.settings.cyan_color }}22 0, transparent 25%), radial-gradient(circle at 88% 78%, {{ block.settings.violet_color }}26 0, transparent 28%), linear-gradient(135deg, transparent 49.8%, {{ block.settings.cyan_color }}18 50%, transparent 50.2%), linear-gradient(45deg, transparent 49.8%, {{ block.settings.gold_color }}14 50%, transparent 50.2%);
+    background-size: auto, auto, 54px 54px, 68px 68px;
+    border-radius: {{ block.settings.corner_radius }}px;
+  }
+
+  .ai-tultech-hero__inner-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.95fr);
+    align-items: center;
+    gap: clamp(24px, 5vw, 72px);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(32px, 6vw, 80px);
+    box-sizing: border-box;
+  }
+
+  .ai-tultech-hero__content-{{ ai_gen_id }} { min-width: 0; }
+  .ai-tultech-hero__title-{{ ai_gen_id }} {
+    margin: 0 0 18px;
+    color: {{ block.settings.text_color }};
+    font-size: clamp(2rem, 4.5vw, {{ block.settings.title_size }}px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+  .ai-tultech-hero__subtitle-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: clamp(1rem, 1.35vw, {{ block.settings.body_size }}px);
+    line-height: 1.65;
+    max-width: 58ch;
+  }
+  .ai-tultech-hero__actions-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .ai-tultech-hero__button-{{ ai_gen_id }} {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+  }
+  .ai-tultech-hero__button-{{ ai_gen_id }}:focus-visible { outline: 3px solid {{ block.settings.cyan_color }}; outline-offset: 3px; }
+  .ai-tultech-hero__button--primary-{{ ai_gen_id }} { background: {{ block.settings.gold_color }}; color: {{ block.settings.primary_text_color }}; }
+  .ai-tultech-hero__button--primary-{{ ai_gen_id }}:hover { background: {{ block.settings.primary_hover_color }}; color: {{ block.settings.primary_text_color }}; }
+  .ai-tultech-hero__button--secondary-{{ ai_gen_id }} { border-color: {{ block.settings.cyan_color }}; background: transparent; color: {{ block.settings.text_color }}; }
+  .ai-tultech-hero__button--secondary-{{ ai_gen_id }}:hover { background: {{ block.settings.cyan_color }}; color: {{ block.settings.secondary_hover_text }}; }
+
+  .ai-tultech-hero__image-wrap-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 260px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid {{ block.settings.cyan_color }}55;
+    border-radius: 12px;
+    background: {{ block.settings.image_backdrop }};
+    box-shadow: 0 18px 50px #00000035;
+  }
+  .ai-tultech-hero__image-{{ ai_gen_id }} { display: block; width: 100%; height: 100%; object-fit: {{ block.settings.image_fit }}; object-position: {{ block.settings.image_position }}; }
+  .ai-tultech-hero__placeholder-{{ ai_gen_id }} { position: relative; display: flex; width: 100%; height: 100%; min-height: 260px; align-items: center; justify-content: center; }
+  .ai-tultech-hero__placeholder-{{ ai_gen_id }} svg { display: block; width: 70%; height: 70%; color: {{ block.settings.cyan_color }}; opacity: .65; }
+  .ai-tultech-hero__empty-{{ ai_gen_id }} { position: absolute; right: 12px; bottom: 12px; left: 12px; color: {{ block.settings.text_color }}; font-size: 13px; text-align: center; }
+
+  @media screen and (max-width: 749px) {
+    .ai-tultech-hero-{{ ai_gen_id }} { width: 100%; }
+    .ai-tultech-hero__inner-{{ ai_gen_id }} { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 28px 20px; }
+    .ai-tultech-hero__content-{{ ai_gen_id }} { order: 1; }
+    .ai-tultech-hero__image-wrap-{{ ai_gen_id }} { order: 2; min-height: 180px; aspect-ratio: 16 / 10; }
+    .ai-tultech-hero__actions-{{ ai_gen_id }} { flex-direction: column; align-items: stretch; margin-top: 22px; }
+    .ai-tultech-hero__button-{{ ai_gen_id }} { width: 100%; box-sizing: border-box; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ai-tultech-hero__button-{{ ai_gen_id }} { transition: none; }
+  }
+{% endstyle %}
+
+<section class="ai-tultech-hero-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-tultech-hero__inner-{{ ai_gen_id }}">
+    <div class="ai-tultech-hero__content-{{ ai_gen_id }}">
+      {% if block.settings.title != blank %}<h1 class="ai-tultech-hero__title-{{ ai_gen_id }}">{{ block.settings.title | escape }}</h1>{% endif %}
+      {% if block.settings.subtitle != blank %}<p class="ai-tultech-hero__subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle | escape }}</p>{% endif %}
+      <div class="ai-tultech-hero__actions-{{ ai_gen_id }}">
+        {% assign primary_url = block.settings.primary_link | default: '/collections/all' %}
+        {% assign secondary_url = block.settings.secondary_link | default: 'https://wa.me/50663908426' %}
+        <a class="ai-tultech-hero__button-{{ ai_gen_id }} ai-tultech-hero__button--primary-{{ ai_gen_id }}" href="{{ primary_url }}">{{ block.settings.primary_label | escape }}</a>
+        <a class="ai-tultech-hero__button-{{ ai_gen_id }} ai-tultech-hero__button--secondary-{{ ai_gen_id }}" href="{{ secondary_url }}" target="_blank" rel="noopener noreferrer">{{ block.settings.secondary_label | escape }}</a>
+      </div>
+    </div>
+    <div class="ai-tultech-hero__image-wrap-{{ ai_gen_id }}">
+      {% if block.settings.brand_image != blank %}
+        <img class="ai-tultech-hero__image-{{ ai_gen_id }}" src="{{ block.settings.brand_image | image_url: width: 1600 }}" alt="{{ block.settings.brand_image.alt | default: shop.name | escape }}" loading="eager" width="{{ block.settings.brand_image.width }}" height="{{ block.settings.brand_image.height }}">
+      {% else %}
+        <div class="ai-tultech-hero__placeholder-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+          <span class="ai-tultech-hero__empty-{{ ai_gen_id }}">Agrega la imagen de marca del comercio.</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Banner principal TulTech",
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Lo que ves es lo que llega. Siempre." },
+    { "type": "textarea", "id": "subtitle", "label": "Subtítulo", "default": "Tecnología en tendencia, accesorios y repuestos que en tu país cuestan el doble o simplemente no se consiguen — con fotos reales y comunicación honesta, no promesas vacías." },
+    { "type": "text", "id": "primary_label", "label": "Texto del botón principal", "default": "Ver catálogo completo" },
+    { "type": "url", "id": "primary_link", "label": "Destino principal" },
+    { "type": "text", "id": "secondary_label", "label": "Texto del botón secundario", "default": "Escribinos por WhatsApp" },
+    { "type": "url", "id": "secondary_link", "label": "Destino de WhatsApp" },
+    { "type": "header", "content": "Imagen de marca" },
+    { "type": "image_picker", "id": "brand_image", "label": "Imagen" },
+    { "type": "select", "id": "image_fit", "label": "Ajuste de imagen", "options": [{ "value": "contain", "label": "Mostrar imagen completa" }, { "value": "cover", "label": "Rellenar marco" }], "default": "contain" },
+    { "type": "select", "id": "image_position", "label": "Encuadre", "options": [{ "value": "center center", "label": "Centro" }, { "value": "center top", "label": "Arriba al centro" }, { "value": "center bottom", "label": "Abajo al centro" }, { "value": "left center", "label": "Izquierda" }, { "value": "right center", "label": "Derecha" }], "default": "center center" },
+    { "type": "color", "id": "image_backdrop", "label": "Fondo de imagen", "default": "#101C35" },
+    { "type": "header", "content": "Apariencia" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Ancho en escritorio", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "title_size", "label": "Tamaño del título", "min": 32, "max": 64, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "body_size", "label": "Tamaño del texto", "min": 14, "max": 22, "step": 2, "unit": "px", "default": 18 },
+    { "type": "range", "id": "corner_radius", "label": "Redondeo de esquinas", "min": 0, "max": 32, "step": 4, "unit": "px", "default": 12 },
+    { "type": "color", "id": "background_color", "label": "Fondo", "default": "#081329" },
+    { "type": "color", "id": "text_color", "label": "Texto", "default": "#FFFFFF" },
+    { "type": "color", "id": "gold_color", "label": "Amarillo dorado", "default": "#FFD447" },
+    { "type": "color", "id": "primary_text_color", "label": "Texto del botón principal", "default": "#171300" },
+    { "type": "color", "id": "primary_hover_color", "label": "Fondo principal al pasar", "default": "#FFE47A" },
+    { "type": "color", "id": "cyan_color", "label": "Cian", "default": "#45D7F5" },
+    { "type": "color", "id": "secondary_hover_text", "label": "Texto secundario al pasar", "default": "#071522" },
+    { "type": "color", "id": "violet_color", "label": "Violeta", "default": "#9B7BFF" }
+  ],
+  "presets": [{ "name": "Banner principal TulTech" }],
+  "tag": null,
+  "class": "tultech-hero-block"
+}
 {% endschema %}
